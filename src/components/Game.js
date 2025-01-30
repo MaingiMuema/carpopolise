@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import Scene from './Scene';
+import { OrbitControls, PerspectiveCamera, Grid } from '@react-three/drei';
 import Car from './Car';
 import { Physics } from '@react-three/rapier';
 
@@ -12,8 +11,20 @@ export default function Game() {
         <Suspense fallback={null}>
           <Physics>
             <PerspectiveCamera makeDefault position={[0, 5, 10]} />
-            <Scene />
             <Car />
+            <Grid
+              args={[100, 100]}
+              cellSize={1}
+              cellThickness={0.5}
+              cellColor="#6f6f6f"
+              sectionSize={5}
+              sectionThickness={1}
+              sectionColor="#9d4b4b"
+              fadeDistance={30}
+              fadeStrength={1}
+              followCamera={false}
+              position={[0, -0.01, 0]}
+            />
             <OrbitControls />
             <ambientLight intensity={0.5} />
             <directionalLight
