@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
+import { KeyboardControls } from '@react-three/drei';
+import Game from './components/Game';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <KeyboardControls
+      map={[
+        { name: 'forward', keys: ['ArrowUp', 'w', 'W'] },
+        { name: 'backward', keys: ['ArrowDown', 's', 'S'] },
+        { name: 'left', keys: ['ArrowLeft', 'a', 'A'] },
+        { name: 'right', keys: ['ArrowRight', 'd', 'D'] },
+      ]}
+    >
+      <Game />
+    </KeyboardControls>
   );
 }
 
